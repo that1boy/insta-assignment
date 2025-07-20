@@ -1,8 +1,6 @@
-export type UserStories = {
+export interface Users {
   id: string;
-  user: {
-    username: string;
-    avatar: string;
-  };
-  stories: { id: string; url: string; }[];
-}; 
+  name: string;
+  avatar: string;
+  stories: { id: string; url: string }[];
+};
