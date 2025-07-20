@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "your_story",
+    "name": "dry_story",
     "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
     "stories": [
       {
@@ -32,7 +32,7 @@
     "stories": [
       {
         "id": "s4",
-        "url": "https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1752564627655-168bd1be3202?w=500&auto=format&fit=crop&q=60"
       },
       {
         "id": "s5",
@@ -47,7 +47,7 @@
     "stories": [
       {
         "id": "s6",
-        "url": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1751378679063-cbd774c0f973?w=500&auto=format&fit=crop&q=60"
       },
       {
         "id": "s7",
@@ -55,7 +55,7 @@
       },
       {
         "id": "s8",
-        "url": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1751378679063-cbd774c0f973?w=500&auto=format&fit=crop&q=60"
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "id": "s14",
-        "url": "https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1752564627655-168bd1be3202?w=500&auto=format&fit=crop&q=60"
       }
     ]
   },
@@ -129,7 +129,7 @@
     "stories": [
       {
         "id": "s16",
-        "url": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1751378679063-cbd774c0f973?w=500&auto=format&fit=crop&q=60"
       }
     ]
   },
@@ -155,7 +155,7 @@
     "stories": [
       {
         "id": "s19",
-        "url": "https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1752564627655-168bd1be3202?w=500&auto=format&fit=crop&q=60"
       }
     ]
   },
@@ -170,7 +170,7 @@
       },
       {
         "id": "s21",
-        "url": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1751378679063-cbd774c0f973?w=500&auto=format&fit=crop&q=60"
       }
     ]
   },
@@ -196,66 +196,7 @@
       },
       {
         "id": "s24",
-        "url": "https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80"
-      }
-    ]
-  },
-  {
-    "id": "16",
-    "name": "traveler",
-    "avatar": "https://randomuser.me/api/portraits/men/16.jpg",
-    "stories": [
-      {
-        "id": "s25",
-        "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-      }
-    ]
-  },
-  {
-    "id": "17",
-    "name": "bookworm",
-    "avatar": "https://randomuser.me/api/portraits/women/17.jpg",
-    "stories": [
-      {
-        "id": "s26",
-        "url": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80"
-      }
-    ]
-  },
-  {
-    "id": "18",
-    "name": "gamer_guy",
-    "avatar": "https://randomuser.me/api/portraits/men/18.jpg",
-    "stories": [
-      {
-        "id": "s27",
-        "url": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
-      },
-      {
-        "id": "s28",
-        "url": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80"
-      }
-    ]
-  },
-  {
-    "id": "19",
-    "name": "fashionista",
-    "avatar": "https://randomuser.me/api/portraits/women/19.jpg",
-    "stories": [
-      {
-        "id": "s29",
-        "url": "https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80"
-      }
-    ]
-  },
-  {
-    "id": "20",
-    "name": "pet_pal",
-    "avatar": "https://randomuser.me/api/portraits/men/20.jpg",
-    "stories": [
-      {
-        "id": "s30",
-        "url": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80"
+        "url": "https://images.unsplash.com/photo-1752564627655-168bd1be3202?w=500&auto=format&fit=crop&q=60"
       }
     ]
   }

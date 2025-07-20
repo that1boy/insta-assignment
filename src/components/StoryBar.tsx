@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import userData from "../assets/data/userData.json";
-import { Users } from "../types/stories";
+import { Users } from "../types/users";
 
 interface Props {
   onSelect: (userId: string) => void;
+  watched: { [userId: string]: boolean }
 }
 
 const BATCH_SIZE = 5;
 
-export const StoryBar: React.FC<Props> = ({ onSelect }) => {
+export const StoryBar: React.FC<Props> = ({ onSelect, watched }) => {
   const [users, setUsers] = useState<Users[]>([]);
   const [loadedCount, setLoadedCount] = useState(BATCH_SIZE);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -17,7 +18,6 @@ export const StoryBar: React.FC<Props> = ({ onSelect }) => {
     setUsers(userData as Users[]);
   }, []);
 
-  const visibleStories = users.slice(0, loadedCount);
   const hasMore = loadedCount < userData.length;
 
   const handleScroll = () => {
@@ -37,7 +37,8 @@ export const StoryBar: React.FC<Props> = ({ onSelect }) => {
         ref={scrollRef}
         onScroll={handleScroll}
       >
-        {visibleStories.map((user) => {
+        {userData.map((user) => {
+          const isWatched = watched[user.id]
           return (
             <div
               key={user.id}
@@ -45,7 +46,7 @@ export const StoryBar: React.FC<Props> = ({ onSelect }) => {
             >
               <button
                 onClick={() => onSelect(user.id)}
-                className="rounded-full overflow-hidden w-16 h-16 border-2 border-pink-500"
+                className={`rounded-full overflow-hidden w-16 h-16 border-2 ${isWatched ? "border-gray-500" : "border-pink-500" }`}
               >
                 <img
                   src={user.avatar}
