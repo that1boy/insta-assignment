@@ -18,10 +18,10 @@ export const HomePage: React.FC = () => {
     }
   };
 
-    const sortedData = [
-      ...userStoriesData.filter((user) => !watched[user.id]),
-      ...userStoriesData.filter((user) => watched[user.id]),
-    ];
+  const sortedData = [
+    ...userStoriesData.filter((user) => !watched[user.id]),
+    ...userStoriesData.filter((user) => watched[user.id]),
+  ];
 
   const handleViewerClose = () => {
     setActiveUserIndex(0);
@@ -31,38 +31,34 @@ export const HomePage: React.FC = () => {
   const handlePrevUser = () => {
     if (activeUserIndex !== null && activeUserIndex > 0) {
       setActiveUserIndex(activeUserIndex - 1);
-      setActiveUserId(userStoriesData[activeUserIndex].id)
-    }else{
-      setActiveUserId(null)
+      setActiveUserId(userStoriesData[activeUserIndex].id);
+    } else {
+      setActiveUserId(null);
     }
-  }
+  };
 
   const markAsWatched = (userId: string | null) => {
     if (userId && !watched[userId]) {
       const newWatched = { ...watched, [userId]: true };
       setWatched(newWatched);
     }
-  }
+  };
 
   const nextUser = () => {
-    if (activeUserIndex !== null) {
-      markAsWatched(activeUserId)
-      if (activeUserIndex < userStoriesData.length - 1) {
-        setActiveUserIndex(activeUserIndex + 1);
-        setActiveUserId(userStoriesData[activeUserIndex].id)
-      } else {
-        setActiveUserId(null)
-      }
+    if (activeUserIndex === null) return;
+    if (activeUserIndex < userStoriesData.length - 1) {
+      setActiveUserIndex(activeUserIndex + 1);
+      setActiveUserId(userStoriesData[activeUserIndex].id);
+    } else {
+      setActiveUserId(null);
     }
-  }
+  };
 
   return (
     <>
       <div className="fixed min-h-screen w-screen bg-black text-white md:hidden overflow-hidden">
         {activeUserId == null ? (
-          <StoryBar 
-          onSelect={handleOnSelect} 
-          watched={watched} />
+          <StoryBar onSelect={handleOnSelect} watched={watched} />
         ) : (
           <StoryViewer
             storyData={userStoriesData[activeUserIndex]}

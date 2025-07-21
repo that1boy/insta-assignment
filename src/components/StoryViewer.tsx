@@ -9,7 +9,13 @@ interface Props {
   markAsWatched: (userId: string) => void;
 }
 
-export const StoryViewer: React.FC<Props> = ({ storyData,onClose,onPrevUser,onNextUser,markAsWatched,}) => {
+export const StoryViewer: React.FC<Props> = ({
+  storyData,
+  onClose,
+  onPrevUser,
+  onNextUser,
+  markAsWatched,
+}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
   const [storyIndex, setStoryIndex] = useState<number>(0);
@@ -26,7 +32,7 @@ export const StoryViewer: React.FC<Props> = ({ storyData,onClose,onPrevUser,onNe
     startTimer();
     return clearTimer;
   }, [storyIndex, storyData]);
-  
+
   const clearTimer = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -40,7 +46,6 @@ export const StoryViewer: React.FC<Props> = ({ storyData,onClose,onPrevUser,onNe
       nextStory();
     }, 5000);
   };
-
 
   const handleClick = (e: React.MouseEvent) => {
     const x = e.clientX;
@@ -102,6 +107,7 @@ export const StoryViewer: React.FC<Props> = ({ storyData,onClose,onPrevUser,onNe
           </div>
         ) : (
           <img
+            data-testid="story-image"
             src={stories[storyIndex].url}
             onLoad={() => setIsLoading(false)}
             onError={() => {
