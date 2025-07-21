@@ -1,46 +1,137 @@
-# Getting Started with Create React App
+# Instagram Stories
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A mobile-first Instagram Stories feature built with React, TypeScript, and Tailwind CSS. This application replicates the core functionality of Instagram Stories.
 
-## Available Scripts
+## 🚀 Live Demo
 
-In the project directory, you can run:
+https://chic-cobbler-ea45b2.netlify.app/
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Core Functionality
+- **Mobile-First Design**: Optimized for mobile devices with responsive layout
+- **Story Navigation**: Tap left/right to navigate between stories
+- **Auto-Advance**: Stories automatically progress after 5 seconds
+- **User Stories**: Each user can have multiple stories
+- **Watched State**: Tracks which users' stories have been fully viewed
+- **Error Handling**: Handling of image load failures
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### User Experience
+- **Story Bar**: Horizontal scrollable list of user stories
+- **Lazy Loading**: Efficiently loads users as you scroll (5 at a time)
+- **Context Menu Prevention**: Disabled right-click context menu
 
-### `npm test`
+### Data Management
+- **Type Safety**: Full TypeScript implementation
+- **Mock Data**: 15 users with realistic story data
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS for utility-first styling
+- **Build Tool**: Create React App
+- **Language**: TypeScript for type safety
+- **Icons**: Custom SVG and text-based logos
+- **Images**: Unsplash for high-quality placeholder images
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Installation & Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation Steps
 
-### `npm run eject`
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd insta-assignment
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. **Open in browser**
+   - Navigate to `http://localhost:3000`
+   - Use browser dev tools to simulate mobile view
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Running Tests
+```bash
+npm test
+```
 
-## Learn More
+### Building for Production
+```bash
+npm run build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎨 Design Choices
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1. **Mobile-First Architecture**
+- **Rationale**: Instagram Stories is primarily a mobile feature
+- **Implementation**: Uses Tailwind's responsive classes with `md:hidden` for desktop
+- **Benefit**: Ensures optimal performance and UX on target devices
+
+### 2. **Component Structure**
+```
+src/
+├── components/
+│   ├── StoryBar.tsx      # Horizontal story list
+│   └── StoryViewer.tsx   # Full-screen story viewer
+├── types/
+│   └── users.ts        # Shared TypeScript types
+├── assets/data/
+│   └── userData.json      # Mock story data
+└── App.tsx              # Main application logic
+```
+
+### 3. **State Management**
+- **Local State**: Uses React's `useState` for component-level state
+- **No External Libraries**: Avoids Redux/Context for simplicity
+
+### 4. **Performance Optimizations**
+
+#### **Lazy Loading**
+- **Story Bar**: Loads 5 users initially, loads 5 more on scroll
+- **Images**: Uses `onLoad` and `onError` handlers for proper loading states
+
+#### **Rendering Optimization**
+- **Conditional Rendering**: Only renders visible stories
+- **Memoization**: Uses `useRef` for values that don't need re-renders
+
+### 5. **User Experience Design**
+
+#### **Navigation**
+- **Tap Navigation**: Left/right taps for story navigation (Instagram-like)
+- **Auto-Advance**: Automatic story progression with 5 second duration
+
+#### **Visual Feedback**
+- **Loading States**: Spinner while images load
+- **Error States**: Shwoing message for failed images
+- **Watched Indicators**: Gray borders for completed stories
+
+#### **Accessibility**
+- **Color Contrast**: High contrast text and UI elements
+
+
+## 🔧 Scalability Considerations
+
+### **Performance at Scale**
+- **Virtual Scrolling**: Can implement for large user lists
+- **Image Optimization**: Ready for CDN integration
+- **Code Splitting**: Can split components for better loading
+
+
+## 📱 Browser Support
+
+- **Mobile**: iOS Safari 12+, Chrome Mobile 70+
+- **Desktop**: Chrome 80+, Firefox 75+, Safari 13+
+- **Features**: ES6+, CSS Grid, Flexbox
+
