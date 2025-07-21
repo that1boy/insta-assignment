@@ -1,10 +1,10 @@
-# Instagram Stories Clone
+# Instagram Stories
 
 A mobile-first Instagram Stories feature built with React, TypeScript, and Tailwind CSS. This application replicates the core functionality of Instagram Stories.
 
 ## 🚀 Live Demo
 
-**[Deploy your app and add the link here]**
+https://chic-cobbler-ea45b2.netlify.app/
 
 ## ✨ Features
 
