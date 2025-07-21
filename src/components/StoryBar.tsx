@@ -18,6 +18,7 @@ export const StoryBar: React.FC<Props> = ({ onSelect, watched }) => {
     setUsers(userData as Users[]);
   }, []);
 
+  const visibleRest = users.slice(0, loadedCount);
   const hasMore = loadedCount < userData.length;
 
   const handleScroll = () => {
@@ -37,7 +38,7 @@ export const StoryBar: React.FC<Props> = ({ onSelect, watched }) => {
         ref={scrollRef}
         onScroll={handleScroll}
       >
-        {userData.map((user) => {
+        {visibleRest.map((user) => {
           const isWatched = watched[user.id]
           return (
             <div

@@ -54,47 +54,52 @@ describe("StoryViewer", () => {
   });
 
   it("goes to next story on right click", () => {
-    render(<StoryViewer {...mockProps} />);
-
-    act(() => {
-      fireEvent.click(document.body, { clientX: window.innerWidth }); 
-      jest.runOnlyPendingTimers(); 
-    });
+    const { container } = render(<StoryViewer {...mockProps} />);
 
     const img = screen.getByTestId("story-image");
+    fireEvent.load(img);
+
+    const viewer = container.firstChild as HTMLElement;
+    fireEvent.click(viewer, { clientX: window.innerWidth });
+
     expect(img).toHaveAttribute("src", mockProps.storyData.stories[1].url);
   });
 
   it("goes to previous story or user on left click", () => {
-    render(<StoryViewer {...mockProps} />);
-
-    act(() => {
-      fireEvent.click(document.body, { clientX: window.innerWidth }); 
-      jest.runOnlyPendingTimers(); 
-    });
+    const { container } = render(<StoryViewer {...mockProps} />);
 
     const img = screen.getByTestId("story-image");
-    expect(img).toHaveAttribute("src", mockProps.storyData.stories[1].url);
+    fireEvent.load(img);
 
-    act(() => {
-      fireEvent.click(document.body, { clientX: 0 }); 
-      jest.runOnlyPendingTimers(); 
-    });
+    const viewer = container.firstChild as HTMLElement;
+    fireEvent.click(viewer, { clientX: window.innerWidth });
+    fireEvent.click(viewer, { clientX: 0 });
 
     expect(img).toHaveAttribute("src", mockProps.storyData.stories[0].url);
+  });
 
+  it("calls onPrevUser when on last story and right clicked", () => {
+    const { container } = render(<StoryViewer {...mockProps} />);
+
+    const img = screen.getByTestId("story-image");
+    fireEvent.load(img);
+
+    const viewer = container.firstChild as HTMLElement;
+    fireEvent.click(viewer, { clientX: 0 });
+
+    expect(mockProps.onPrevUser).toHaveBeenCalled();
   });
 
   it("calls onNextUser when on last story and right clicked", () => {
-    render(<StoryViewer {...mockProps} />);
-    act(() => {
-      fireEvent.click(document.body, { clientX: window.innerWidth }); 
-      jest.runOnlyPendingTimers(); 
-    });
-    act(() => {
-      fireEvent.click(document.body, { clientX: window.innerWidth }); 
-      jest.runOnlyPendingTimers(); 
-    });
+    const { container } = render(<StoryViewer {...mockProps} />);
+
+    const img = screen.getByTestId("story-image");
+    fireEvent.load(img);
+
+    const viewer = container.firstChild as HTMLElement;
+    fireEvent.click(viewer, { clientX: window.innerWidth });
+    fireEvent.click(viewer, { clientX: window.innerWidth });
+
     expect(mockProps.onNextUser).toHaveBeenCalled();
   });
 

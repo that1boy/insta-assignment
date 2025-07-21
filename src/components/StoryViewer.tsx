@@ -9,6 +9,8 @@ interface Props {
   markAsWatched: (userId: string) => void;
 }
 
+const DEFAULT_DURATION = 5000
+
 export const StoryViewer: React.FC<Props> = ({
   storyData,
   onClose,
@@ -19,8 +21,11 @@ export const StoryViewer: React.FC<Props> = ({
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
   const [storyIndex, setStoryIndex] = useState<number>(0);
+  const [progress, setProgress] = useState(0);
   const stories = storyData.stories;
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const animationFrameRef = useRef<number | null>(null);
+  const startTimestampRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (storyIndex === stories.length - 1) {
@@ -29,23 +34,25 @@ export const StoryViewer: React.FC<Props> = ({
   }, [storyIndex]);
 
   useEffect(() => {
-    startTimer();
-    return clearTimer;
+    startTimestampRef.current = null;
+    const animate = (timestamp: number) => {
+      if (!startTimestampRef.current)  startTimestampRef.current = timestamp;
+      const elapsed = timestamp - startTimestampRef.current;
+      const percent = Math.min((elapsed / DEFAULT_DURATION) * 100, 100);
+      setProgress(percent);
+      if (percent < 100) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      } else {
+        setProgress(0);
+        nextStory();
+      }
+    };
+    animationFrameRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationFrameRef.current)
+        cancelAnimationFrame(animationFrameRef.current);
+    };
   }, [storyIndex, storyData]);
-
-  const clearTimer = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-
-  const startTimer = () => {
-    clearTimer();
-    timerRef.current = setTimeout(() => {
-      nextStory();
-    }, 5000);
-  };
 
   const handleClick = (e: React.MouseEvent) => {
     const x = e.clientX;
@@ -121,6 +128,32 @@ export const StoryViewer: React.FC<Props> = ({
           />
         )}
       </>
+
+      {/* progress bar */}
+      <div className="absolute top-2 left-2 right-2 flex gap-1 px-1 z-20">
+        {stories.map((story, i) => {
+          const isActive = i === storyIndex;
+          return (
+            <div
+              key={i}
+              className="h-1 flex-1 rounded-full bg-white/30 relative overflow-hidden"
+            >
+              {i < storyIndex && (
+                <div className="absolute left-0 top-0 h-full w-full bg-white transition-all duration-200" />
+              )}
+              {isActive && (
+                <div
+                  className="absolute left-0 top-0 h-full bg-white"
+                  style={{
+                    width: `${progress}%`,
+                    opacity: 1,
+                  }}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
 
       {/* close btn */}
       <button
